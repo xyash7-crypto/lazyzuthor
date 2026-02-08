@@ -47,17 +47,17 @@ export default function LandingPage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/canvas"
+              href="/auth/sign-up"
               className="group px-8 py-4 bg-slate-900 text-white rounded-xl font-semibold text-lg hover:bg-slate-800 transition-all hover:scale-105 flex items-center gap-2"
             >
-              Try Now
+              Get Started Free
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
-              href="/auth/sign-up"
+              href="/auth/login"
               className="px-8 py-4 bg-white text-slate-900 border-2 border-slate-200 rounded-xl font-semibold text-lg hover:border-slate-300 transition-all hover:scale-105"
             >
-              Create Account
+              Sign In
             </Link>
           </div>
         </div>
