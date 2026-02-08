@@ -1,5 +1,5 @@
 
-import type { PenColor, PenSize } from './types';
+import type { PenColor, PenSize } from '@/types';
 
 export const PEN_SIZES: PenSize[] = [
   { id: 'small', value: 2, label: 'S' },
