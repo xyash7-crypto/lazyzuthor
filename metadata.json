@@ -1,5 +1,0 @@
-{
-  "name": "LazyWriting",
-  "description": "An infinite canvas web application that allows users to draw continuously on a virtual sheet of paper that auto-scrolls horizontally, creating a unique and fluid drawing experience.",
-  "requestFramePermissions": []
-}
