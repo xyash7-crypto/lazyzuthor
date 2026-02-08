@@ -54,10 +54,10 @@ export function DrawingCanvas({ scribbleId, initialStrokes = [], initialTitle }:
       }
 
       const now = new Date();
-      const title = initialTitle || `Scribble ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+      const name = initialTitle || `Scribble ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
       
       const scribbleData = {
-        title,
+        name,
         strokes: strokesToSave,
         user_id: user.id,
       };
