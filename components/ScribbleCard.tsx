@@ -5,7 +5,7 @@ import { Calendar, Clock } from "lucide-react";
 
 interface Scribble {
   id: string;
-  title: string;
+  name: string;
   created_at: string;
   updated_at: string;
 }
@@ -39,7 +39,7 @@ export function ScribbleCard({ scribble }: ScribbleCardProps) {
       className="group block p-6 bg-white rounded-xl border border-slate-200 hover:border-slate-300 hover:shadow-lg transition-all"
     >
       <h3 className="text-lg font-semibold text-slate-900 mb-4 group-hover:text-slate-700 transition-colors line-clamp-2">
-        {scribble.title}
+        {scribble.name}
       </h3>
       <div className="flex flex-col gap-2 text-sm text-slate-600">
         <div className="flex items-center gap-2">

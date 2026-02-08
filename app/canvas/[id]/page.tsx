@@ -26,7 +26,7 @@ export default async function ExistingCanvasPage({ params }: PageProps) {
     <DrawingCanvas
       scribbleId={scribble.id}
       initialStrokes={scribble.strokes || []}
-      initialTitle={scribble.title}
+      initialTitle={scribble.name}
     />
   );
 }
