@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Link from 'next/link';
 import type { PenColor, PenSize } from '@/types';
 import { PEN_COLORS, PEN_SIZES, MIN_SCROLL_SPEED, MAX_SCROLL_SPEED } from '@/constants';
 
@@ -26,6 +27,18 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
 }) => {
   return (
     <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 bg-gray-800 text-white rounded-lg shadow-2xl p-4 flex items-center space-x-6">
+      {/* Back to Dashboard */}
+      <Link
+        href="/dashboard"
+        className="flex items-center gap-1.5 text-sm font-medium text-gray-300 hover:text-white transition-colors shrink-0"
+        title="Back to Dashboard"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        Dashboard
+      </Link>
+
+      <div className="h-12 border-l border-gray-600"></div>
+
       {/* Pen Size */}
       <div className="flex flex-col items-center">
         <label className="text-xs font-semibold mb-2 text-gray-400">SIZE</label>
