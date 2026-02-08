@@ -1,7 +1,7 @@
 
 import React from 'react';
-import type { PenColor, PenSize } from '../types';
-import { PEN_COLORS, PEN_SIZES, MIN_SCROLL_SPEED, MAX_SCROLL_SPEED } from '../constants';
+import type { PenColor, PenSize } from '@/types';
+import { PEN_COLORS, PEN_SIZES, MIN_SCROLL_SPEED, MAX_SCROLL_SPEED } from '@/constants';
 
 interface ControlPanelProps {
   penSize: number;
