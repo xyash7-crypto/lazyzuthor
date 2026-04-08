@@ -13,6 +13,7 @@ import {
 } from "@/constants";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface DrawingCanvasProps {
   scribbleId?: string;
@@ -29,6 +30,8 @@ export function DrawingCanvas({ scribbleId, initialStrokes = [], initialTitle }:
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
   const [isExporting, setIsExporting] = useState<boolean>(false);
   const [isSaving, setIsSaving] = useState<boolean>(false);
+  const [isGuest, setIsGuest] = useState<boolean>(false);
+  const [showGuestBanner, setShowGuestBanner] = useState<boolean>(true);
   
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const scrollOffsetRef = useRef<number>(0);
@@ -42,16 +45,18 @@ export function DrawingCanvas({ scribbleId, initialStrokes = [], initialTitle }:
   const supabase = createClient();
 
   const saveToDatabase = useCallback(async (strokesToSave: Stroke[]) => {
-    console.log("[v0] Saving to database...");
     setIsSaving(true);
 
     try {
       const { data: { user } } = await supabase.auth.getUser();
       
       if (!user) {
-        console.log("[v0] No user found, skipping save");
+        setIsGuest(true);
+        setIsSaving(false);
         return;
       }
+      
+      setIsGuest(false);
 
       const now = new Date();
       const name = initialTitle || `Scribble ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
@@ -100,6 +105,15 @@ export function DrawingCanvas({ scribbleId, initialStrokes = [], initialTitle }:
       setIsSaving(false);
     }
   }, [supabase, initialTitle]);
+
+  // Check if user is logged in on mount
+  useEffect(() => {
+    const checkAuth = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      setIsGuest(!user);
+    };
+    checkAuth();
+  }, [supabase]);
 
   // Auto-save when strokes change
   useEffect(() => {
@@ -413,6 +427,26 @@ export function DrawingCanvas({ scribbleId, initialStrokes = [], initialTitle }:
       {isSaving && (
         <div className="absolute top-4 right-4 z-20 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg text-sm font-medium">
           Saving...
+        </div>
+      )}
+      {isGuest && showGuestBanner && (
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 bg-slate-800 text-white px-4 py-3 rounded-lg shadow-lg text-sm flex items-center gap-4">
+          <span>Guest mode - your work is not saved.</span>
+          <Link
+            href="/auth/sign-up"
+            className="bg-white text-slate-900 px-3 py-1.5 rounded-md font-medium hover:bg-slate-100 transition-colors"
+          >
+            Sign Up to Save
+          </Link>
+          <button
+            onClick={() => setShowGuestBanner(false)}
+            className="text-slate-400 hover:text-white transition-colors"
+            aria-label="Dismiss banner"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
       )}
       <ControlPanel
