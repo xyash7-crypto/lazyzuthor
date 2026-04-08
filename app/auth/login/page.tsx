@@ -90,6 +90,20 @@ export default function Page() {
                   Sign up
                 </Link>
               </div>
+              <div className="relative my-6">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t border-slate-200" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-white px-2 text-slate-500">Or</span>
+                </div>
+              </div>
+              <Link
+                href="/canvas"
+                className="w-full block text-center py-2.5 px-4 border border-slate-300 text-slate-700 text-sm font-medium rounded-lg hover:bg-slate-50 transition-colors"
+              >
+                Continue as Guest
+              </Link>
             </form>
           </div>
         </div>

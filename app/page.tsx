@@ -57,10 +57,10 @@ export default function LandingPage() {
               </svg>
             </Link>
             <Link
-              href="/auth/login"
+              href="/canvas"
               className="px-8 py-4 bg-white text-slate-900 border-2 border-slate-200 rounded-xl font-semibold text-lg hover:border-slate-300 transition-all hover:scale-105"
             >
-              Sign In
+              Try Without Account
             </Link>
           </div>
         </div>
@@ -119,15 +119,23 @@ export default function LandingPage() {
           <p className="text-xl text-slate-600 mb-10 leading-relaxed">
             Join thousands of lazy thinkers who are changing the world, one scribble at a time.
           </p>
-          <Link
-            href="/auth/sign-up"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 text-white rounded-xl font-semibold text-lg hover:bg-slate-800 transition-all hover:scale-105"
-          >
-            Get Started Free
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/auth/sign-up"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 text-white rounded-xl font-semibold text-lg hover:bg-slate-800 transition-all hover:scale-105"
+            >
+              Get Started Free
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+            <Link
+              href="/canvas"
+              className="px-8 py-4 text-slate-600 font-medium hover:text-slate-900 transition-colors"
+            >
+              or try it now without an account
+            </Link>
+          </div>
         </div>
       </section>
 

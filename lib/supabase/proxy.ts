@@ -34,10 +34,9 @@ export async function updateSession(request: NextRequest) {
       data: { user },
     } = await supabase.auth.getUser()
 
-    // Protect canvas and dashboard routes - require authentication
+    // Protect dashboard routes - require authentication (canvas is guest-accessible)
     if (
-      (request.nextUrl.pathname.startsWith('/canvas') ||
-        request.nextUrl.pathname.startsWith('/dashboard') ||
+      (request.nextUrl.pathname.startsWith('/dashboard') ||
         request.nextUrl.pathname.startsWith('/protected')) &&
       !user
     ) {
